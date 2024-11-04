@@ -27,7 +27,7 @@ class SevenDays:
     def transition(self):
         df = self.df
         df['공고일시'] = pd.to_datetime(df['공고일시'], errors='coerce').dt.strftime("%Y/%m/%d")
-        df['마감일시'] = pd.to_datetime(df['공고일시'], errors='coerce').dt.strftime("%Y/%m/%d")
+        df['마감일시'] = pd.to_datetime(df['마감일시'], errors='coerce').dt.strftime("%Y/%m/%d")
 
         seven_days_ago = (datetime.strptime(self.today_date, "%Y/%m/%d") - timedelta(days=7)).strftime("%Y/%m/%d")
         df = df.loc[df['공고일시'] >= seven_days_ago]
